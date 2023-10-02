@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block body %}
+<h1>LOGIN</h1>
+
+{% from "auth/_util.html" import render_field %}
+<form id="loginForm" class="form form-register" method="POST" action="" role="form">
+  {{ form.hidden_tag() }}
+  {{ render_field(form.user_name, placeholder="username") }}<br>
+  {{ render_field(form.password, placeholder="password") }}<br>
+  <p><input class="btn btn-default btn-submit" type="submit" value="Login"></p>
+</form>
+{% endblock %}

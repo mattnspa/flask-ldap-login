@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}{% endblock %} - Flaskr</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<nav>
+  <ul>
+    <li><span>Flaskr</span></li>
+    {% if user %}
+    <li style="float:right"><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+    <li style="float:right"><span>{{ user['id'] }}</span></li>
+    {% else %}
+      <li style="float:right"><a href="{{ url_for('auth.login') }}">Log In</a></li>
+    {% endif %}
+  </ul>
+</nav>
+<section class="content">
+  {% block body %}{% endblock %}
+</section>
+{% for message in get_flashed_messages() %}
+  <div class="flash">{{ message }}</div>
+{% endfor %}
+</html>
